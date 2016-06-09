@@ -4,9 +4,6 @@ var currentUser ;
 var fbProvider = new firebase.auth.FacebookAuthProvider();
 
 
-var imported = document.createElement('script');
-imported.src = 'js/class.js';
-document.head.appendChild(imported);
 
 
 /*
@@ -58,10 +55,12 @@ var currentUser =  firebase.auth().currentUser;
 console.log(currentUser); 
 var dataArr = $("#item-info").serializeArray();
 var picFile = $("#picData")[0].files[0];
-
+console.log(picFile);
+console.log($("#picData")[0]);
 //var product = new Item({"title":title, "price":price, "descrip":descrip, "imgD":pic , "userTime": new Date($.now()).toLocaleString()}, currentUser);
 var product = new Item({title: "cup", price: 1200, itemKey: "-sdfjiotfdgjl", seller: "sdfjigalngme", sellerName:"Radia" , itemImg: picFile}, currentUser);
- //firebase.database().ref("items").push(product);
+ console.log(product);
+ firebase.database().ref("items").push({title: "cup", price: 1200, itemKey: "-sdfjiotfdgjl", seller: "sdfjigalngme", sellerName:"Radia" , itemImg: picFile.target.result});
 
 //$("<target-dom>").append(product.dom);
 });
